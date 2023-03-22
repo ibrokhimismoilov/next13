@@ -5,8 +5,10 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h2>Hello Next</h2>
-      <Link href={"/about"}>About Page</Link>
-      <Link href={"/users"}>Users Page</Link>
+      <nav>
+        <Link href={"/about"}>About Page</Link>
+        <Link href={"/users"}>Users Page</Link>
+      </nav>
     </main>
   );
 }

@@ -1,19 +1,21 @@
 import React from "react";
 import type { Metadata } from "next";
-import { User } from "@/types";
+import { IUser } from "@/types";
 import getAllUsers from "@/lib/getAllUsers";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Users page",
+  title: "Users list",
 };
 
-export default async function UsersPage() {
-  const usersData: Promise<User[]> = await getAllUsers();
+export default async function UsersListPage() {
+  const usersData: Promise<IUser[]> = await getAllUsers();
   const users = await usersData;
 
   const content = (
     <section>
+      <Link href={"/"}>GoBack</Link>
+      <hr />
       <h2>List of Users</h2>
 
       {users.map((user) => (

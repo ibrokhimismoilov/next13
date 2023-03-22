@@ -1,4 +1,4 @@
-export type User = {
+export interface IUser {
   id: number;
   name: string;
   username: string;
@@ -20,4 +20,11 @@ export type User = {
     catchPhrase: string;
     bs: string;
   };
-};
+}
+
+export interface IPost {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
