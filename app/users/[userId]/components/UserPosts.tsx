@@ -1,4 +1,4 @@
-import { IPost, IUserPosts } from "@/types";
+import { IPost } from "@/types";
 import React from "react";
 
 type Props = {
