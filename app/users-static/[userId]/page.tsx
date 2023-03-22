@@ -1,10 +1,11 @@
-import { Metadata } from "next";
+import Link from "next/link";
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { IUser, IPost } from "@/types";
 import getUser from "@/lib/getUser";
 import getUserPosts from "@/lib/getUserPosts";
 import { UserPosts } from "./components/UserPosts";
-import Link from "next/link";
+import getAllUsers from "@/lib/getAllUsers";
 
 type Params = {
   params: {
@@ -32,7 +33,7 @@ export default async function UserPage({ params: { userId } }: Params) {
 
   const content = (
     <section>
-      <Link href={"/users"}>GoBack</Link>
+      <Link href={"/users-static"}>Go Back</Link>
       <hr />
       <h2>{user.name}</h2>
       <ul>
@@ -62,4 +63,11 @@ export default async function UserPage({ params: { userId } }: Params) {
   );
 
   return content;
+}
+
+export async function generateStaticParams() {
+  const usersData: Promise<IUser[]> = await getAllUsers();
+  const users = await usersData;
+
+  return users.map((user) => ({ userId: user.id }));
 }
